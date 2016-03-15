@@ -1,0 +1,43 @@
+
+Général :
+	- Utiliser l’interface d’abstraction PDO et définir le mode d’erreur sur PDO::ERRMODE_EXCEPTION
+	- un header, une section principale et un footer
+
+Partie utilisateur :
+	- Inscription  --> email, pseudo, mdp  +  email de confirmation
+	- Connection   --> pseudo, mdp  +  email de réinitialisation mdp
+	- Déconnection --> depuis n'importe quelle page, un seul clic
+
+Partie montage :
+	- Accessible seulement aux personnes connectées
+
+	- 1ère partie (principale) --> webcam, images, bouton photo
+	- 2ème partie (latérale)   --> mignature des photos prises
+
+	- On ne peut pas prendre de photo si aucune image n'est selectionnée
+	- Superposition des 2 images est fait en PHP
+	- possibilité d'uploader image si pas de webcam
+	- possibilité de supprimer ses montages (pas ceux des autres)
+
+Partie Galerie :
+	- afficher toutes les images de tous les membres, triées par date de création
+	- possibilité de les commenter et de les liker
+	- message envoyer à l'utilisateur quand sa photo est commenté
+	- liste des images paginée
+
+Bonus :
+	- Aperçu du rendu final en live
+	- Pagination infinie sur la partie galerie
+	- Partager ses images sur les réseaux sociaux
+	- incorporer des GIF
+
+Fichiers obligatoires :
+	- index.php
+	- Fichier config/database.php contenant la configuration de la base de données --> $DB_DSN, $DB_USER, $DB_PASSWORD
+	- Fichier config/setup.php pour créer/recréer schéma de la base de données en utilisant les infos contenues dans config/database.php
+
+Erreurs non tolérés :
+- Mots de passe “en clair” dans une base de données
+- Pouvoir injecter du code HTML ou JavaScript “utilisateur” dans des variables mal protégées
+- Pouvoir uploader du contenu indésirable
+- Pouvoir modifier une requête SQL
