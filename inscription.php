@@ -1,43 +1,53 @@
+<?php
+
+        require_once 'functions.php';
+        session_start();
+
+        if (isset($_SESSION['pseudo'])) {
+            header('Location: index.php');
+            die;
+        }
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/header.css" />
         <title> Camagru </title>
     </head>
     
     <body>
-
-        <header>
+            <?php 
+                LogMessage();
+                require_once 'header.php';
+             ?>
             
-        </header>
+            <div class="corpus">
             
-            <form method="post" action="traitement.php">
-               <p>
-                
-                   <label for="pseudo"> Pseudo </label>
-                   <input type="text" name="pseudo" id="pseudo" />
-                   
-                   <br />
-                   <label for="email"> E-mail </label>
-                   <input type="text" name="email" id="email" />
+                <div class="form">
+                    <form method="post" action="traitement.php">
+                        <label for="pseudo"> Pseudo </label>
+                        <input type="text" name="pseudo" id="pseudo" autofocus required />
+                        <br />
+                        <label for="email"> E-mail </label>
+                        <input type="text" name="email" id="email" required />
+                        <br />
+                        <label for="pass"> Mot de passe </label>
+                        <input type="password" name="pass" id="pass" required />
+                        <br />
+                        <label for="cpass"> Confirmation </label>
+                        <input type="password" name="cpass" id="cpass" required />
+                        <br /><br />
+                        <input type="submit" value="ENVOYER" />      
+                    </form>
+                </div>
 
-                   <br />
-                   <label for="pass"> Mot de passe </label>
-                   <input type="password" name="pass" id="pass" />
-
-                   <br />
-                   <label for="cpass"> Confirmation du mot de passe </label>
-                   <input type="password" name="cpass" id="cpass" />
-
-                    <input type="submit" value="Envoyer" />
-                   
-               </p>
-            </form>
+            </div>
              
-        <footer>
-
-        </footer>
+            <?php require_once 'footer.php'; ?>
 
     </body>
 </html>
