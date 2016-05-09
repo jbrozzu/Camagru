@@ -26,6 +26,16 @@ function CheckMdp($mdp, $cmdp) {
 }
 
 function CheckUniqueInfo($pseudo, $email, $bdd) {
+	if (strlen($pseudo) > 20) {
+		$_SESSION['ERROR_MESSAGE'] = '<div id="error">Ce pseudo est trop long (20 caractères max).</div>';
+		header('Location: inscription.php');
+		die;
+	}
+	if (!preg_match('/^[A-Za-z0-9_]+$/', $pseudo)){
+		$_SESSION['ERROR_MESSAGE'] = '<div id="error">Le pseudo est invalide (lettres, chiffres et underscore uniquement).</div>';
+		header('Location: inscription.php');
+		die;
+	}
 	$req_pseudo = $bdd->prepare('SELECT pseudo FROM USERS where pseudo = :pseudo');
 	$req_pseudo->bindParam(':pseudo', $pseudo);
 	$req_pseudo->execute();
@@ -59,7 +69,8 @@ function CheckLog($pseudo, $pass, $bdd) {
 	$req_pseudo = $bdd->prepare('SELECT pseudo FROM USERS where pseudo = :pseudo');
 	$req_pseudo->bindParam(':pseudo', $pseudo);
 	$req_pseudo->execute();
-	if ($req_pseudo->fetchColumn()) {
+
+	if ($req_pseudo->fetchColumn() == $pseudo) {
 		$req_password = $bdd->prepare('SELECT mdp FROM USERS where pseudo = :pseudo');
 	    $req_password->bindParam(':pseudo', $pseudo);
 		$req_password->execute();
@@ -72,10 +83,42 @@ function CheckLog($pseudo, $pass, $bdd) {
 		return false;
     }
     else {
-    	$_SESSION['ERROR_MESSAGE'] = '<div id="error">Ce pseudo' . $req_pseudo->fetchColumn() .' est invalide.</div>';
+    	$_SESSION['ERROR_MESSAGE'] = '<div id="error">Ce pseudo est invalide.</div>';
 		header('Location: login.php');
     	die;
     }
+}
+
+function humanTiming($time) {
+    $time = time() - $time;
+    $time = ($time < 1) ? 1 : $time;
+    $tokens = array (
+        31536000 => 'an',
+        2592000 => 'mois',
+        604800 => 'semaine',
+        86400 => 'jour',
+        3600 => 'heure',
+        60 => 'minute',
+        1 => 'seconde'
+    );
+    foreach ($tokens as $unit => $text) {
+        if ($time < $unit) continue;
+        $numberOfUnits = floor($time / $unit);
+        return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
+ 	}
+ }
+
+function checkLikes($bdd, $user_name, $pic_name) {
+	$likes = $bdd->prepare('SELECT * FROM likes WHERE pic_name = ? AND user_name = ?');
+    $likes->execute(array($pic_name, $user_name));
+    $likes->setFetchMode(PDO::FETCH_ASSOC);
+    $fetch_likes = $likes->fetch();
+     if ($fetch_likes['activate'] == 1) {
+     	return 1;
+     }
+     else {
+     	return 0;
+     } 
 }
 
 ?>

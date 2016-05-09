@@ -1,28 +1,12 @@
-
 (function() {
-	var video = document.getElementById('video'),
+	var video = document.getElementById('image'),
 		canvas = document.getElementById('canvas'),
 		context = canvas.getContext('2d'),
 		photo = document.getElementById('photo'),
 		vendorURL = window.URL || window.webkitURL;
 
-	navigator.getMedia = 	navigator.getUserMedia ||
-							navigator.webkitGetUserMedia ||
-							navigator.mozGetUserMedia ||
-							navigator.msGetUserMedia;
-
-	navigator.getMedia({
-		video: true,
-		audio: false
-	}, function(stream) {
-		video.src = vendorURL.createObjectURL(stream);
-		video.play();
-	}, function(error) {
-		console.log("An error occured! " + err);
-	});
-
 	document.getElementById('capture').addEventListener('click', function() {
-		context.drawImage(video, 0, 0, 400, 300);
+		context.drawImage(image, 0, 0, 400, 300);
 
 		var radios = document.getElementsByName('groupe_png');
 	    var img;

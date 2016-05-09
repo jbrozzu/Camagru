@@ -9,7 +9,7 @@
 
 	$pass_hache = sha1($_POST['pass']);
 	$req = $bdd->prepare('INSERT INTO Users (pseudo, email, mdp, date_inscription) VALUES(?, ?, ?, NOW())');
-	$req->execute(array($_POST['pseudo'], $_POST['email'], $pass_hache));
+	$req->execute(array(mysqli_real_escape_string($link, $_POST['pseudo']), mysqli_real_escape_string($link, $_POST['email']), $pass_hache));
 	$_SESSION['pseudo'] = $_POST['pseudo'];
 	SuccessMess(1);
 

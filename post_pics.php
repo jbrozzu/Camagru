@@ -10,7 +10,7 @@
 
 		$img_name = $_SESSION['pseudo'].'/image-'.time().'.png';
 		$req_insert_img = $bdd->prepare('INSERT INTO Images (img_name, user_name, date_creation) VALUES (?, ?, NOW())');
-		$req_insert_img->execute(array($img_name, $_SESSION['pseudo']));
+		$req_insert_img->execute(array(mysqli_real_escape_string($link, $img_name), $_SESSION['pseudo']));
 
 		header('Location: cam.php');
 	}

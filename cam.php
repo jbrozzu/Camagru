@@ -8,7 +8,7 @@
     // ini_set('display_errors', 1);
 
     if (!isset($_SESSION['pseudo'])) {
-        header('Location: index.php');
+        header('Location: index.php?page=1');
         die;
     }
 
@@ -40,6 +40,7 @@
 
 
             <div id="display_stiker">
+                <div class="stiker_scroll">
                 <?php
                     $path_png = "./img_png";
                     $pngs = scandir($path_png);
@@ -48,27 +49,41 @@
                         $id = strpos($png, '.');
                         $id = substr($png, 0, $id);
                 ?>
-
-                <div class="stiker">
-                  <div class="">
-                    <img id="<?php echo $id; ?>" width="90px" height="90px" src="./img_png/<?php echo $png; ?>" alt="" />
-                  </div>
-                  <div class="">
-                    <input type="radio" name="groupe_png" value="<?php echo $id; ?>" onclick="document.getElementById('capture').disabled = false">
-                  </div>
-                </div>
+                
+                    <div class="stiker">
+                      <div class="">
+                        <img id="<?php echo $id; ?>" width="90px" height="90px" src="./img_png/<?php echo $png; ?>" alt="" />
+                      </div>
+                      <div class="">
+                        <input type="radio" name="groupe_png" value="<?php echo $id; ?>" onclick="document.getElementById('capture').disabled = false">
+                      </div>
+                    </div>
 
                 <?php
                     }
                 }
                 ?>
+                </div>
 
             </div>
+
+            <form id="form_upload" enctype="multipart/form-data" action="upload.php" method="post">              
+                    <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Uploader :</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
+                    <input name="fichier" type="file" id="fichier_a_uploader" />
+                    <input id="upload" type="submit" name="submit" value="Uploader" />                 
+            </form>
 
             <div class="container">
 
                 <div class="booth"> 
+                <?php if ($_GET["img"] == "upload") { ?>
+                    <img id="image" width="400" height="300" src="./files/upload.png">
+                <?php }
+                      else { ?>
                     <video id="video" width="400" height="300"> </video>
+                <?php } ?>
+
                     <button href="#" id="capture" class="booth-capture-button" onclick="document.getElementById('submit').disabled = false" disabled>TAKE PHOTO</button>
                     <canvas id="canvas" width="400" height="300" > </canvas>
                     <img id="photo" src="photos/placeholder.jpg">
@@ -95,7 +110,13 @@
 
                 </div>
                 
-                <script src="js/photo.js"></script>
+                <?php if ($_GET["img"] == "upload") { ?>
+                    <script src="js/photo2.js"></script>
+                <?php }
+                      else { ?>
+                    <script src="js/photo.js"></script>
+                <?php } ?>
+                    
 
             </div>
 

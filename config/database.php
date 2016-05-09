@@ -12,4 +12,7 @@
 	    die('Erreur : '.$e->getMessage());
 	}
 
+	$link = mysqli_init();
+	mysqli_real_connect($link, 'localhost', 'root', 'root', 'Camagru');
+
 ?>

@@ -31,6 +31,9 @@
     $retour_img = $bdd->prepare('SELECT * FROM Images ORDER BY date_creation DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
     $retour_img->execute();
     $retour_img->setFetchMode(PDO::FETCH_ASSOC);
+
+    $retour_total_com=$bdd->prepare('SELECT COUNT(*) AS total FROM comments WHERE pic_name = :name');
+
 ?>
 
 
@@ -40,7 +43,6 @@
         <meta charset="utf-8" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/header.css" />
-        <link rel="stylesheet" href="css/footer.css" />
         <title> Camagru </title>
     </head>
     
@@ -53,21 +55,46 @@
 
 
 
-         <?php    while($img = $retour_img->fetch()) { ?>
-            <div id="gallery">
-                <?php if (isset($_SESSION['pseudo'])) { ?>
-                    <a href="view_pic.php?img=<?php echo $img['img_name']; ?>"><img class="picture" src="./img/<?php echo $img['img_name']; ?>"></a>
-            <?php }
-                else { ?>
-                    <img class="picture" src="./img/<?php echo $img['img_name']; ?>">
-            <?php }  ?>
-                <div id="info_pic"> 
-                    Photo prise par : <?php echo $img['user_name']; ?> 
-                    <div class="cont_like_com"> <img class="like_comment" src="photos/like.png"> 0 </div>
-                    <div class="cont_like_com"> <img class="like_comment" src="photos/comment.png"> 0 </div>
+    <?php   while($img = $retour_img->fetch()) { ?>
+                <div id="gallery">
+                    <?php if (isset($_SESSION['pseudo'])) { ?>
+                        <a href="view_pic.php?img=<?php echo $img['img_name']; ?>&user=<?php echo $img['user_name']; ?>">
+                        <img class="picture" src="./img/<?php echo $img['img_name']; ?>"></a>
+                <?php }
+                    else { ?>
+                        <img class="picture" src="./img/<?php echo $img['img_name']; ?>">
+                <?php }  ?>
+                    <div id="info_pic"> 
+                        Photo prise par : <?php echo htmlspecialchars($img['user_name']); ?> 
+
+                    <?php   
+                        $retour_total_com->execute(array(':name' => $img['img_name']));
+                        $retour_total_com->setFetchMode(PDO::FETCH_ASSOC);
+                        $total_com = $retour_total_com->fetch();  
+
+                        $likes_nb = $bdd->prepare('SELECT COUNT(*) AS total FROM likes WHERE pic_name = ? AND activate = 1');
+                        $likes_nb->execute(array($img['img_name']));
+                        $likes_nb->setFetchMode(PDO::FETCH_ASSOC);
+                        $total_like = $likes_nb->fetch();
+                    ?>
+                    <?php if (isset($_SESSION['pseudo'])) { 
+                            if (checkLikes($bdd, $_SESSION['pseudo'], $img['img_name']) == 1) { ?>
+                                <div class="cont_like_com"> <a href="check_likes_index.php?img=<?php echo $img['img_name'] ?>&user=<?php echo $_GET['user'] ?>&page=<?php echo $_GET['page']; ?>"><img class="like_comment" src="photos/like_vert.png"></a> <?php echo $total_like['total']; ?> </div>
+                            <?php }
+                            else { ?>
+                                <div class="cont_like_com"> <a href="check_likes_index.php?img=<?php echo $img['img_name'] ?>&user=<?php echo $_GET['user'] ?>&page=<?php echo $_GET['page']; ?>"><img class="like_comment" src="photos/like.png"></a> <?php echo $total_like['total']; ?> </div>
+                            <?php }
+                            } 
+                           else { ?>
+                            <div class="cont_like_com"> <img class="like_comment" src="photos/like.png"> <?php echo $total_like['total']; ?> </div>
+                    <?php } ?>
+
+
+                        <div class="cont_like_com"> <img class="like_comment" src="photos/comment.png"> 
+                        <?php echo $total_com['total']; ?> </div>
+                    </div>
                 </div>
-            </div>
-        <?php
+                <?php
             }
         ?>
    

@@ -1,6 +1,5 @@
 <?php
 
-echo "C'est fait !";
 
 $to      = 'jeremie.brozzu@gmail.com'; // Send email to our user
 $subject = 'Signup | Verification'; // Give the email a subject 
@@ -20,6 +19,5 @@ http://www.yourwebsite.com/verify.php?email='coucou'&hash='hahaha' "; // Our mes
 $headers = 'From:noreply@yourwebsite.com' . "\r\n"; // Set from headers
 mail($to, $subject, $message, $headers); // Send our email
 
-echo "C'est fait !";
 
 ?>
