@@ -1,5 +1,5 @@
 <?php
-	require_once 'functions.php';
+    require_once 'functions.php';
     session_start();
 
     if (isset($_SESSION['pseudo'])) {
@@ -27,15 +27,15 @@
         <div class="corpus">
         
             <div class="form">
-                <form method="post" action="traitement_log.php">
+            <div id='title_forgot'>Réinitialisation du Mot de passe</div>
+                <form method="post" action="traitement_forgot.php">
 					<label for="pseudo"> Pseudo </label>
 					<input type="text" name="pseudo" id="pseudo" autofocus required />
 					<br />
-					<label for="pass"> Mot de passe </label>
-					<input type="password" name="pass" id="pass" required />
+					<label for="email"> Email </label>
+					<input type="text" name="email" id="email" required />
 					<br /><br />
-					<input type="submit" value="ENVOYER" />    
-                    <div id='forgot'><a id='forgot-link' href="forgot.php">Mot de passe oublié ?</a></div>  
+					<input type="submit" value="ENVOYER" />     
                 </form>
             </div>
 

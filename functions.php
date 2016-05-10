@@ -61,11 +61,25 @@ function CheckUniqueInfo($pseudo, $email, $bdd) {
 
 function SuccessMess($nb) {
 	if ($nb == 1) {
-		$_SESSION['SUCCESS_MESSAGE'] = '<div id="success">Vous avez bien été enregistré.</div>';
+		$_SESSION['SUCCESS_MESSAGE'] = '<div id="success">Votre compte a été créé, veuillez l\'activer en cliquant sur le lien qui vous a été envoyer par email.</div>';
+	}
+	else if ($nb == 2) {
+		$_SESSION['SUCCESS_MESSAGE'] = '<div id="success">Votre compte a été activé.</div>';
+	}
+	else if ($nb == 3) {
+		$_SESSION['SUCCESS_MESSAGE'] = '<div id="success">Un mail contenant votre nouveau mot de passe vient de vous être envoyé.</div>';
 	}
 }
 
 function CheckLog($pseudo, $pass, $bdd) {
+	$active = $bdd->prepare('SELECT active FROM Users WHERE pseudo = ?');
+	$active->execute(array($pseudo));
+	if ($active->fetchColumn() == 0) {
+		$_SESSION['ERROR_MESSAGE'] = '<div id="error">Veuillez activer votre compte avant de vous connecter.</div>';
+        header('Location: index.php');
+        die;
+	}
+
 	$req_pseudo = $bdd->prepare('SELECT pseudo FROM USERS where pseudo = :pseudo');
 	$req_pseudo->bindParam(':pseudo', $pseudo);
 	$req_pseudo->execute();
@@ -87,6 +101,28 @@ function CheckLog($pseudo, $pass, $bdd) {
 		header('Location: login.php');
     	die;
     }
+}
+
+function CheckLog2($pseudo, $email, $bdd) {
+	$active = $bdd->prepare('SELECT active FROM Users WHERE pseudo = ?');
+	$active->execute(array($pseudo));
+	if ($active->fetchColumn() == 0) {
+		$_SESSION['ERROR_MESSAGE'] = '<div id="error">Veuillez activer votre compte avant de tenter de réinitialiser le mot de passe.</div>';
+        header('Location: index.php');
+        die;
+    }
+
+	$req_pseudo = $bdd->prepare('SELECT pseudo FROM USERS where pseudo = ? AND email = ?');
+	$req_pseudo->execute(array($pseudo, $email));
+
+	if ($req_pseudo->fetchColumn()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+
 }
 
 function humanTiming($time) {

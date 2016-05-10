@@ -331,6 +331,27 @@ input[type=submit]:hover {
 	font-weight: 500;
 }
 
+/*
+**	LOGIN
+*/
+
+#forgot {
+	float:right;
+}
+
+#forgot-link {
+	text-decoration: none;
+	color: black;
+}
+
+#title_forgot {
+	text-align: center;
+	margin-bottom: 15px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
 @media screen and (max-width: 686px)
 {
     body {

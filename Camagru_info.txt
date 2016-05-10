@@ -4,8 +4,8 @@ OK	- Utiliser l’interface d’abstraction PDO et définir le mode d’erreur s
 OK	- un header, une section principale et un footer
 
 Partie utilisateur :
-	- Inscription  --> email, pseudo, mdp  +  email de confirmation
-	- Connection   --> pseudo, mdp  +  email de réinitialisation mdp
+OK	- Inscription  --> email, pseudo, mdp  +  email de confirmation
+OK	- Connection   --> pseudo, mdp  +  email de réinitialisation mdp
 OK	- Déconnection --> depuis n'importe quelle page, un seul clic
 
 Partie montage :
@@ -16,28 +16,28 @@ OK	- 2ème partie (latérale)   --> mignature des photos prises
 
 OK	- On ne peut pas prendre de photo si aucune image n'est selectionnée
 OK	- Superposition des 2 images est fait en PHP
-	- possibilité d'uploader image si pas de webcam
+OK	- possibilité d'uploader image si pas de webcam
 OK	- possibilité de supprimer ses montages (pas ceux des autres)
 
 Partie Galerie :
 OK	- afficher toutes les images de tous les membres, triées par date de création
 OK	- possibilité de les commenter et de les liker
-	- message envoyer à l'utilisateur quand sa photo est commenté
+??	- message envoyer à l'utilisateur quand sa photo est commenté
 OK	- liste des images paginée
 
 Bonus :
-	- Aperçu du rendu final en live
+-	- Aperçu du rendu final en live
 OK	- Pagination infinie sur la partie galerie
-	- Partager ses images sur les réseaux sociaux
-	- incorporer des GIF
+-	- Partager ses images sur les réseaux sociaux
+-	- incorporer des GIF
 
 Fichiers obligatoires :
 OK	- index.php
 OK	- Fichier config/database.php contenant la configuration de la base de données --> $DB_DSN, $DB_USER, $DB_PASSWORD
-	- Fichier config/setup.php pour créer/recréer schéma de la base de données en utilisant les infos contenues dans config/database.php
+OK	- Fichier config/setup.php pour créer/recréer schéma de la base de données en utilisant les infos contenues dans config/database.php
 
 Erreurs non tolérés :
 OK	- Mots de passe “en clair” dans une base de données
-	- Pouvoir injecter du code HTML ou JavaScript “utilisateur” dans des variables mal protégées
-	- Pouvoir uploader du contenu indésirable
+OK	- Pouvoir injecter du code HTML ou JavaScript “utilisateur” dans des variables mal protégées
+OK	- Pouvoir uploader du contenu indésirable
 OK	- Pouvoir modifier une requête SQL
