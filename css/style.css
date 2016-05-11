@@ -12,11 +12,20 @@ body {
 }
 
 .corpus {
-	min-height: 500px;
+	height: 98.5%;
+    width: 70%;
+    position: absolute;
+    background-color: #66b266;
+    overflow: scroll;
+    padding-bottom: 15px;
+    outline: solid 3px;
+
+
+	/*min-height: 500px;
 	background-color: #66b266;
 	max-height: 1062px;
 	overflow: scroll;
-	padding-bottom: 15px;
+	padding-bottom: 15px;*/
 }
 
 .container {
@@ -81,7 +90,7 @@ input[type=submit]:hover {
 .booth {
 	background-color: #a6a6a6;
 	border: 10px solid #ddd;
-	margin: 0 65px 35px 0;
+	margin: 0 65px 70px 0;
 	display: inline-block;
 	border-radius: 7px;
 }
@@ -121,12 +130,12 @@ input[type=submit]:hover {
 }
 
 .stiker_scroll {
-	max-width: 60%;
+	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
 	overflow-x: scroll;
-	max-height: 186px;
-	padding: 0 5px;
+	height: 194px;
+	padding: 50px 5px 15px 5px;
 }
 
 #upload {
@@ -215,6 +224,11 @@ input[type=submit]:hover {
 	text-align: center;
 	padding: 6px 0 3px 0;
 	border-top: solid 2px #333;
+	background-color: white;
+    position: fixed;
+    bottom: 49px;
+    right: 15%;
+    width: 70%;
 }
 
 #image, #video {
@@ -229,7 +243,7 @@ input[type=submit]:hover {
 #gallery2 {
 	display: block;
 	width: 55%;
-	margin: 35px auto 20px auto;
+	margin: 65px auto 20px auto;
 	background-color: #ddd;
 	border: solid 3px #333;
 }
@@ -286,9 +300,10 @@ input[type=submit]:hover {
 	background-color: #ccc;
 	min-height: 79px;
 	padding: 1px;
-	max-height: 405px;
+	max-height: 380px;
 	overflow: scroll;
 	border: solid 2px #333;
+	margin-bottom: 80px;
 }
 
 .com_unique {
@@ -352,12 +367,7 @@ input[type=submit]:hover {
 }
 
 
-@media screen and (max-width: 686px)
-{
-    body {
-		width: 100%;
-	}
-}
+
 
 @media screen and (max-width: 500px)
 {
@@ -366,24 +376,30 @@ input[type=submit]:hover {
 		width: 80%;
 		margin: 30px auto 15px auto;
 	}
+
+	.corpus {
+    	width: 100%;
+    }
 }
 
-@media screen and (max-width: 1171px)
+@media screen and (max-width: 686px)
 {
-	.booth {
-    	margin: 0 20px 35px 0;
+    body {
+		width: 100%;
 	}
 
-	.container {
-    	padding: 15px 0px 0px 15px;
-	}
+	.corpus {
+    	width: 100%;
+    }
 
-	#form_upload {
-    	margin-left: 20px;
-	}
+    #page_index {
+    	width: 100%;
+    	right: 0px;
+    }
+
 }
 
-@media screen and (max-width: 1028px) 
+@media screen and (max-width: 1100px) 
 { 
     .booth {
 		display: block;
@@ -402,7 +418,7 @@ input[type=submit]:hover {
 	}
 
 	.stiker_scroll {
-    	max-width: 70%;
+    	max-width: 90%;
     }
 
     .mini_galery {
@@ -419,6 +435,8 @@ input[type=submit]:hover {
 {
 	.booth {
 		width: 300px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 
 	#image, #video {
@@ -439,7 +457,7 @@ input[type=submit]:hover {
 	}
 
 	.stiker_scroll {
-    	max-width: 85%;
+    	max-width: 90%;
     }
 
     #form_upload {
@@ -463,5 +481,75 @@ input[type=submit]:hover {
 
     #title_com {
     	margin-left: -32%;
+	}
+
+	.corpus {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 1250px)
+{
+	.booth {
+    	margin: 0 20px 35px 0;
+	}
+
+	.container {
+    	padding: 15px 0px 0px 15px;
+	}
+
+	#form_upload {
+    	margin-left: 20px;
+	}
+}
+
+@media screen and (min-width: 1400px) 
+{
+	.container {
+    	width: 1000px;
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+
+	.booth {
+	    margin: 0 115px 70px 0;
+	}
+
+	#form_upload {
+    	margin-left: auto;
+    	margin-right: auto;
+	}
+}
+
+@media screen and (min-width: 2000px) 
+{
+	#image, #video, #photo {
+    	width: 500px;
+    	height: 400px;
+	}
+	
+	#submit {
+    	width: 100%; 
+	}
+
+	.mini_galery {
+	    height: 880px;
+	    width: 330px;
+	}
+
+	.mini_pic {
+    	height: 212px;
+    }
+
+    .cross {
+    	margin: 3px 0 0 263px;
+	}
+}
+
+@media screen and (min-width: 2300px) 
+{
+	.stiker_scroll {
+	    width: 100%;
+	    overflow-x: hidden;
 	}
 }

@@ -1,6 +1,12 @@
 header {
 	background-color: #2A4D6E;
     border-bottom: solid 3px #333;
+
+    position: fixed;
+    top: 0;
+    right: 15%;
+    width: 70%;
+    z-index: 5;
 }
 
 ul {
@@ -38,4 +44,25 @@ li a:hover:not(.logo) {
 
 footer {
     border-top: solid 3px #333;
+    position: fixed;
+    bottom: 0;
+    right: 15%;
+    width: 70%;
+
+
+    /*border-top: solid 3px #333;*/
 }
+
+@media screen and (max-width: 686px)
+{
+    footer {
+        right: 0px;
+        width: 100%;
+    }
+
+    header {
+        right: 0px;
+        width: 100%;
+    }
+}
+

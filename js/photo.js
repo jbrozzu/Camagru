@@ -18,7 +18,7 @@
 		video.src = vendorURL.createObjectURL(stream);
 		video.play();
 	}, function(error) {
-		console.log("An error occured! " + err);
+		console.log("An error occured! ");
 	});
 
 	document.getElementById('capture').addEventListener('click', function() {

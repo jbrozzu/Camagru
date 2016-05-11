@@ -31,7 +31,7 @@
 	------------------------
 	 
 	Si les informations sont exactes, cliquer sur ce lien:
-	http://localhost:8888/Camagru/verify.php?pseudo='.$pseudo.'&hash='.$pass_hache.'
+	http://' . gethostname() . ':8080/Camagru/verify.php?pseudo='.$_POST['pseudo'].'&hash='.$pass_hache.'
 	 
 	';
 	                     

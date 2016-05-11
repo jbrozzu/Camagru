@@ -29,7 +29,7 @@
 		------------------------
 		 
 		Cliquez sur ce lien pour revenir sur le site Camagru:
-		http://localhost:8888/Camagru/index.php?page=1
+		http://' . gethostname() . ':8080/Camagru/index.php?page=1
 		 
 		';
 		                     

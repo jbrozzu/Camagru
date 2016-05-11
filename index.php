@@ -26,6 +26,9 @@
     }
 
     $premiereEntree=($pageActuelle-1)*$messagesParPage;
+    if ($premiereEntree=0) {
+        $premiereEntree=1;
+    }
  
 
     $retour_img = $bdd->prepare('SELECT * FROM Images ORDER BY date_creation DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
@@ -97,19 +100,24 @@
                 <?php
             }
         ?>
+
+
+            <div id="page_index"> Page :
+            <?php   if (1 > $nombreDePages) {
+                        echo ' 1 ';
+                    }
+
+                    for($i=1; $i<=$nombreDePages; $i++) {
+                        if($i==$pageActuelle) {
+                            echo ' [ '.$i.' ] '; 
+                        }  
+                        else {
+                            echo ' <a href="index.php?page='.$i.'">'.$i.'</a> ';
+                        }
+                    } ?> 
+            </div> 
    
         </div>
-
-        <div id="page_index"> Page :
-        <?php   for($i=1; $i<=$nombreDePages; $i++) {
-                    if($i==$pageActuelle) {
-                        echo ' [ '.$i.' ] '; 
-                    }  
-                    else {
-                        echo ' <a href="index.php?page='.$i.'">'.$i.'</a> ';
-                    }
-                } ?> 
-        </div> 
 
         <?php require_once 'footer.php'; ?>
 
