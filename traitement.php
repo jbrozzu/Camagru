@@ -30,7 +30,7 @@
 	E-mail: '.$_POST['email'].'
 	------------------------
 	 
-	Si les informations sont exactes, cliquer sur ce lien:
+	Si les informations sont exactes, cliquez sur ce lien:
 	http://' . gethostname() . ':8080/Camagru/verify.php?pseudo='.$_POST['pseudo'].'&hash='.$pass_hache.'
 	 
 	';

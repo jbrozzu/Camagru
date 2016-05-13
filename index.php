@@ -26,9 +26,6 @@
     }
 
     $premiereEntree=($pageActuelle-1)*$messagesParPage;
-    if ($premiereEntree=0) {
-        $premiereEntree=1;
-    }
  
 
     $retour_img = $bdd->prepare('SELECT * FROM Images ORDER BY date_creation DESC LIMIT '.$premiereEntree.', '.$messagesParPage.'');
@@ -56,7 +53,7 @@
 
         <div class="corpus">
 
-
+        <div id='top'> </div>
 
     <?php   while($img = $retour_img->fetch()) { ?>
                 <div id="gallery">
@@ -101,6 +98,7 @@
             }
         ?>
 
+        <div id='bottom'> </div>
 
             <div id="page_index"> Page :
             <?php   if (1 > $nombreDePages) {

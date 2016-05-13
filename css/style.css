@@ -236,6 +236,14 @@ input[type=submit]:hover {
 	height: 300px;
 }
 
+#top {
+	height: 35px;
+}
+
+#bottom {
+	height: 90px;
+}
+
 /*
 **	VUE PHOTO UNIQUE
 */
@@ -366,37 +374,19 @@ input[type=submit]:hover {
 	font-size: 20px;
 }
 
-
-
-
-@media screen and (max-width: 500px)
+@media screen and (max-width: 1250px)
 {
-    #gallery {
-		display: block;
-		width: 80%;
-		margin: 30px auto 15px auto;
+	.booth {
+    	margin: 0 20px 35px 0;
 	}
 
-	.corpus {
-    	width: 100%;
-    }
-}
-
-@media screen and (max-width: 686px)
-{
-    body {
-		width: 100%;
+	.container {
+    	padding: 15px 0px 0px 15px;
 	}
 
-	.corpus {
-    	width: 100%;
-    }
-
-    #page_index {
-    	width: 100%;
-    	right: 0px;
-    }
-
+	#form_upload {
+    	margin-left: 20px;
+	}
 }
 
 @media screen and (max-width: 1100px) 
@@ -429,6 +419,35 @@ input[type=submit]:hover {
 		margin-left: auto;
 		margin-bottom: 20px;
 	}
+}
+
+@media screen and (max-width: 686px)
+{
+    body {
+		width: 100%;
+	}
+
+	.corpus {
+    	width: 100%;
+    }
+
+    #page_index {
+    	width: 100%;
+    	right: 0px;
+    }
+}
+
+@media screen and (max-width: 500px)
+{
+    #gallery {
+		display: block;
+		width: 80%;
+		margin: 30px auto 15px auto;
+	}
+
+	.corpus {
+    	width: 100%;
+    }
 }
 
 @media screen and (max-width: 470px) 
@@ -488,21 +507,6 @@ input[type=submit]:hover {
 	}
 }
 
-@media screen and (max-width: 1250px)
-{
-	.booth {
-    	margin: 0 20px 35px 0;
-	}
-
-	.container {
-    	padding: 15px 0px 0px 15px;
-	}
-
-	#form_upload {
-    	margin-left: 20px;
-	}
-}
-
 @media screen and (min-width: 1400px) 
 {
 	.container {
@@ -543,6 +547,10 @@ input[type=submit]:hover {
 
     .cross {
     	margin: 3px 0 0 263px;
+	}
+
+	#gallery {
+    	width: 24%;
 	}
 }
 
