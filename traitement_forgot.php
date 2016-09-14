@@ -29,9 +29,11 @@
 		------------------------
 		 
 		Cliquez sur ce lien pour revenir sur le site Camagru:
-		http://' . gethostname() . ':8080/Camagru/index.php?page=1
+		http://localhost:8080/Camagru/index.php?page=1
 		 
 		';
+
+		//  http://' . gethostname() . ':8080/Camagru/index.php?page=1
 		                     
 		$headers = 'From:noreply@yourwebsite.com' . "\r\n";
 		mail($to, $subject, $message, $headers);

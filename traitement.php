@@ -30,10 +30,13 @@
 	E-mail: '.$_POST['email'].'
 	------------------------
 	 
-	Si les informations sont exactes, cliquez sur ce lien:
-	http://' . gethostname() . ':8080/Camagru/verify.php?pseudo='.$_POST['pseudo'].'&hash='.$pass_hache.'
+	Si les informations sont exactes, cliquer sur ce lien:
+	http://localhost:8080/Camagru/verify.php?pseudo='.$_POST['pseudo'].'&hash='.$pass_hache.'
 	 
 	';
+
+	//  http://' . gethostname() . ':8080/Camagru/verify.php?pseudo='.$_POST['pseudo'].'&hash='.$pass_hache.'
+	 
 	                     
 	$headers = 'From:noreply@yourwebsite.com' . "\r\n";
 	mail($to, $subject, $message, $headers);

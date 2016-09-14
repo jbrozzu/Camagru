@@ -17,15 +17,9 @@ body {
     position: absolute;
     background-color: #66b266;
     overflow: scroll;
-    padding-bottom: 15px;
+    padding-bottom: 65px;
+    padding-top: 40px;
     outline: solid 3px;
-
-
-	/*min-height: 500px;
-	background-color: #66b266;
-	max-height: 1062px;
-	overflow: scroll;
-	padding-bottom: 15px;*/
 }
 
 .container {
@@ -135,7 +129,7 @@ input[type=submit]:hover {
 	margin-left: auto;
 	overflow-x: scroll;
 	height: 194px;
-	padding: 50px 5px 15px 5px;
+	padding: 15px 5px 15px 5px;
 }
 
 #upload {
@@ -236,14 +230,6 @@ input[type=submit]:hover {
 	height: 300px;
 }
 
-#top {
-	height: 35px;
-}
-
-#bottom {
-	height: 90px;
-}
-
 /*
 **	VUE PHOTO UNIQUE
 */
@@ -342,7 +328,7 @@ input[type=submit]:hover {
 	color: #ffffff;
 	background-color: #E53B3B;
 	margin: 0px 0px 0 0px;
-	padding: 5px 0 5px 12px;
+	padding: 55px 0 5px 12px;
 	font-weight: 500;
 }
 
@@ -350,7 +336,7 @@ input[type=submit]:hover {
 	color: #ffffff;
 	background-color: #249024;
 	margin: 0px 0px 0 0px;
-	padding: 5px 0 5px 12px;
+	padding: 55px 0 5px 12px;
 	font-weight: 500;
 }
 
@@ -374,19 +360,37 @@ input[type=submit]:hover {
 	font-size: 20px;
 }
 
-@media screen and (max-width: 1250px)
+
+
+
+@media screen and (max-width: 500px)
 {
-	.booth {
-    	margin: 0 20px 35px 0;
+    #gallery {
+		display: block;
+		width: 80%;
+		margin: 30px auto 15px auto;
 	}
 
-	.container {
-    	padding: 15px 0px 0px 15px;
+	.corpus {
+    	width: 100%;
+    }
+}
+
+@media screen and (max-width: 686px)
+{
+    body {
+		width: 100%;
 	}
 
-	#form_upload {
-    	margin-left: 20px;
-	}
+	.corpus {
+    	width: 100%;
+    }
+
+    #page_index {
+    	width: 100%;
+    	right: 0px;
+    }
+
 }
 
 @media screen and (max-width: 1100px) 
@@ -419,35 +423,6 @@ input[type=submit]:hover {
 		margin-left: auto;
 		margin-bottom: 20px;
 	}
-}
-
-@media screen and (max-width: 686px)
-{
-    body {
-		width: 100%;
-	}
-
-	.corpus {
-    	width: 100%;
-    }
-
-    #page_index {
-    	width: 100%;
-    	right: 0px;
-    }
-}
-
-@media screen and (max-width: 500px)
-{
-    #gallery {
-		display: block;
-		width: 80%;
-		margin: 30px auto 15px auto;
-	}
-
-	.corpus {
-    	width: 100%;
-    }
 }
 
 @media screen and (max-width: 470px) 
@@ -507,6 +482,21 @@ input[type=submit]:hover {
 	}
 }
 
+@media screen and (max-width: 1250px)
+{
+	.booth {
+    	margin: 0 20px 35px 0;
+	}
+
+	.container {
+    	padding: 15px 0px 0px 15px;
+	}
+
+	#form_upload {
+    	margin-left: 20px;
+	}
+}
+
 @media screen and (min-width: 1400px) 
 {
 	.container {
@@ -547,10 +537,6 @@ input[type=submit]:hover {
 
     .cross {
     	margin: 3px 0 0 263px;
-	}
-
-	#gallery {
-    	width: 24%;
 	}
 }
 

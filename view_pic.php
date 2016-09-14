@@ -3,6 +3,8 @@
 	require_once 'functions.php';
     session_start();
 
+    date_default_timezone_set('Europe/Paris');
+
     if (!isset($_SESSION['pseudo'])) {
         header('Location: index.php?page=1');
         die;
@@ -87,8 +89,9 @@
 		                            <?php echo htmlspecialchars($comment['comment']); ?> </br>
 
 		                        <div style="font-style: italic;">     
-		                        	<?php 	$time = strtotime($comment['date_publication']);
-									echo 'Posté il y a '.humanTiming($time); ?>
+		                        	<?php
+                                    $time = strtotime($comment['date_publication']);
+									echo 'Posté il y a '. humanTiming($time); ?>
 		                        </div> 
 
 		                    </div>
